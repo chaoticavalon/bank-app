@@ -41,7 +41,7 @@ public class ExchangeRateScheduler {
         executorServiceThreadPool.finish();
     }
 
-    //@EventListener(ApplicationReadyEvent.class)
+    @EventListener(ApplicationReadyEvent.class)
     public void updateExchangeRateOnStartUp() {
         updateExchangeRate();
     }
@@ -61,7 +61,7 @@ public class ExchangeRateScheduler {
             } catch (InterruptedException ex) {
                 log.error(null, ex);
             }
-            System.out.println("Finished all threads");
+            log.info("Done updating FOREX");
         }
     }
 

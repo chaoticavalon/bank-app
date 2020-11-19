@@ -102,4 +102,17 @@ This will query the table `exchange_rate` from the database and will return only
 curl --location --request GET 'http://localhost:8080/api/exchangerate?fromCurrency=PHP&toCurrency=USD,CAD,GBP'
 ```
 
+#### Scheduler
+During the start of the application, it will refreshed the forex stored in the database based on the base currency provided in the property file
+You can add more base currency as needed
+```.env
+# Base currencies that need to be stored in DB during scheduling of exchange rate
+exchangerate.default.base=PHP,USD,CAD
+
+```
+Forex update will run every 12:00 in the morning base on the cron configuration
+```.env
+exchangerate.scheduler.cron=0 0 * * *
+```
+
 
